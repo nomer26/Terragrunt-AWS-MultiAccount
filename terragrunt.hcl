@@ -12,7 +12,8 @@ locals {
                     "alias": user.username,
                     "access_key": user.access_key,
                     "secret_key": user.secret_key,
-                    "region": length(regexall(user_spec["account_filter_regex"], user.username)) > 0 ? "us-west-2" : "ap-northeast-2" 
+                    "region": user.region
+                    #"region": length(regexall(user_spec["account_filter_regex"], user.username)) > 0 ? "us-west-2" : "ap-northeast-2"  다음과 조건을 통한 값 지정이 가능합니다.
                 } 
             ]
         ])
