@@ -1,0 +1,55 @@
+resource "aws_default_vpc" "%s_vpc" {                                         # TEMPLATE
+  provider = "aws.%s"                                                         # TEMPLATE
+}
+
+resource "aws_instance" "%s_instance" {                                          # username
+    provider = "aws.%s"                                                           # alias
+    ami = "%s"                                                                      # amis
+    instance_type = "%s"                                                              # instance_types
+    root_block_device {
+      volume_type = "gp2"
+      volume_size = 100
+    }
+    key_name = aws_key_pair.%s_key.key_name                                 # username
+    tags = {
+      "Name" = "%s"                                                     # username
+    }
+    vpc_security_group_ids = [aws_security_group.%s_sg_group.id]        # username
+}
+
+resource "aws_eip" "%s_eip" {                                                  # TEMPLATE
+  provider = "aws.%s"                                                          # TEMPLATE
+  instance = aws_instance.%s_instance.id                      # TEMPLATE
+  vpc = true
+}
+
+resource "aws_key_pair" "%s_key" {                                      # username
+    provider = "aws.%s"                                                      # username
+    key_name = "%s"                                                     # username
+    public_key = "%s"                                                   # pemkeys
+}
+
+
+resource "aws_security_group" "%s_sg_group" {                             # TEMPLATE
+  provider = "aws.%s"                                                     # TEMPLATE
+  name = "%s-sg-group"                                                  # username
+  vpc_id = aws_default_vpc.%s_vpc.id                                      # username
+  ingress {
+    cidr_blocks = [
+      "0.0.0.0/0",
+    ]
+    protocol = "tcp"
+    from_port = 22
+    to_port = 22
+    description = "SSH"
+  }
+
+  egress {
+    cidr_blocks = [
+      "0.0.0.0/0"
+    ]
+    from_port = 0
+    to_port = 0
+    protocol = "-1"
+  }
+}

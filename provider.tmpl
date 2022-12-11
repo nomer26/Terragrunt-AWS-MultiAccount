@@ -1,0 +1,11 @@
+provider "aws" {
+    alias = "%s"
+    access_key = "%s"
+    secret_key = "%s"
+    region = "%s"
+    default_tags {
+        tags = {
+            username = "%s"
+        }
+    }
+}
