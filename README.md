@@ -1,7 +1,12 @@
 # Terragrunt-AWS-MultiAccount
+
+![image](https://user-images.githubusercontent.com/101347968/210550623-6430f4cd-9c83-4a0d-9de3-74b3739a93ab.png)
+
+
 How to provision independent resources for multiple AWS accounts
 
-terragrunt는 중복된 코드 및 작업을 최소화하여 프로비저닝 시간을 단축할 수 있습니다. <br>
+terragrunt는 코드를 템플릿으로 관리하여 중복된 코드와 작업을 최소화하여 프로비저닝 시간을 단축할 수 있습니다. <br>
+또한, 그룹화 및 단일화가 가능하며 사용자의 요구 조건에 따라 세부적인 제어가 가능합니다.
 terragrunt를 활용하여 여러 AWS에 독립된 리소스를 프로비저닝하는 방법을 소개하겠습니다. <br>
 
 
